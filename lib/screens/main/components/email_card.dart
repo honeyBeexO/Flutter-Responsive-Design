@@ -7,10 +7,10 @@ import '../../../extensions.dart';
 
 class EmailCard extends StatelessWidget {
   const EmailCard({
-    Key key,
+    Key? key,
     this.isActive = true,
-    this.email,
-    this.press,
+    required this.email,
+    required this.press,
   }) : super(key: key);
 
   final bool isActive;
@@ -57,7 +57,7 @@ class EmailCard extends StatelessWidget {
                                 text: email.subject,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyText2!
                                     .copyWith(
                                       color:
                                           isActive ? Colors.white : kTextColor,
@@ -71,9 +71,10 @@ class EmailCard extends StatelessWidget {
                         children: [
                           Text(
                             email.time,
-                            style: Theme.of(context).textTheme.caption.copyWith(
-                                  color: isActive ? Colors.white70 : null,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.caption!.copyWith(
+                                      color: isActive ? Colors.white70 : null,
+                                    ),
                           ),
                           SizedBox(height: 5),
                           if (email.isAttachmentAvailable)
@@ -90,7 +91,7 @@ class EmailCard extends StatelessWidget {
                     email.body,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.caption.copyWith(
+                    style: Theme.of(context).textTheme.caption!.copyWith(
                           height: 1.5,
                           color: isActive ? Colors.white70 : null,
                         ),

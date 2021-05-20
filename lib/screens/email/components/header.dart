@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:outlook/shared/responsive.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../../constants.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -13,7 +14,9 @@ class Header extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(kDefaultPadding),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
+          if (Responsive.isMobile(context)) BackButton(color: Colors.black),
           IconButton(
             icon: WebsafeSvg.asset(
               "assets/Icons/Trash.svg",
@@ -21,7 +24,6 @@ class Header extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               "assets/Icons/Reply.svg",
@@ -29,7 +31,6 @@ class Header extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               "assets/Icons/Reply all.svg",
@@ -37,7 +38,6 @@ class Header extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               "assets/Icons/Transfer.svg",
@@ -46,14 +46,14 @@ class Header extends StatelessWidget {
             onPressed: () {},
           ),
           Spacer(),
-          IconButton(
-            icon: WebsafeSvg.asset(
-              "assets/Icons/Printer.svg",
-              width: 24,
+          if (!Responsive.isMobile(context))
+            IconButton(
+              icon: WebsafeSvg.asset(
+                "assets/Icons/Printer.svg",
+                width: 24,
+              ),
+              onPressed: () {},
             ),
-            onPressed: () {},
-          ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               "assets/Icons/Markup.svg",
@@ -61,7 +61,6 @@ class Header extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               "assets/Icons/More vertical.svg",
@@ -69,7 +68,6 @@ class Header extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
         ],
       ),
     );
